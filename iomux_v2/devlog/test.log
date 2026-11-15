@@ -1,0 +1,12 @@
+./test_basic
+test_basic: ok (hits=100000)
+SCALE messages=100000
+./test_timer
+test_timer: ok (ticks=14)
+./test_bind
+test_bind: ok (seen=30)
+./test_errors
+test_errors: ok
+ulimit -n 65535 2>/dev/null; ./test_scale
+test_scale: ok (conns=8000 msgs=500000 rss_kb=3956 elapsed_ms=848 rate=589623/s)
+SCALE connections=8000 messages=500000
